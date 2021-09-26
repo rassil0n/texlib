@@ -1,0 +1,127 @@
+%{{{ COMMANDS
+%}}}
+%{{{ PAPER
+\usepackage[a4paper, bottom=2.5cm, top=2.5cm, left=2cm, right=2cm]{geometry}
+\setlength\parindent{0cm}
+%}}}
+%{{{ LANGUAGE
+\usepackage[german]{babel}
+\usepackage{polyglossia}
+\setdefaultlanguage{german}
+%}}}
+%{{{ FONTS
+\usepackage{fontspec}
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\setmonofont{Noto Sans Mono}
+\usepackage{unicode-math}
+\usepackage{mathtools}
+\setmathfont[Scale=MatchLowercase]{Asana Math}
+\renewcommand\familydefault{\sfdefault}
+\setkomafont{pageheadfoot}{\sffamily}
+%}}}
+%{{{ TABULARX
+\usepackage{tabularx,ragged2e}
+\usepackage{booktabs}
+\newcolumntype{C}{>{\Centering\arraybackslash}X} % centered "X" column
+%}}}
+%{{{ GRAPHICS
+\usepackage{graphicx}
+\graphicspath{{img}{src}}
+%}}}
+%{{{ MISC
+\usepackage{mdframed}
+\usepackage{listings}
+\usepackage{titling}
+%}}}
+%{{{ TODOS
+\usepackage{todonotes}
+\setuptodonotes{fancyline, bordercolor=NordBlack,textcolor=NordBlack,color=NordBlue}
+%}}}
+%{{{ COLOR
+\usepackage{color}
+\usepackage{xcolor}
+%}}}
+%{{{ LOCAL-TOC
+\usepackage{etoc}
+\newcommand{\parttoc}[1][Inhalt des Kapitels\\
+\rule{\textwidth}{1pt}
+\vspace{-1.2cm}
+]{
+	\vfill
+  \etocsettocstyle{
+	  \addsec*{#1}}{}
+  \localtableofcontents
+  \rule{\textwidth}{1pt}
+  \vfill
+}
+%}}}
+%{{{ TIKZ
+% \usepackage{tikz-uml}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,backgrounds,fit}
+%}}}
+%{{{ HEADER/FOOTER
+% \usepackage{fancyhdr}
+% \fancypagestyle{myHeaderFooter}{
+%   \fancyhead{}
+%   \fancyfoot{}
+%   \lhead{\title \quad - \quad \subtitle}
+%   \rhead{\leftmark}
+%   \lfoot{\textsuperscript{\textcopyleft}\theauthor}
+%   \rfoot{\thepage}
+%   \renewcommand{\headrulewidth}{0.4pt}
+%   \renewcommand{\footrulewidth}{0.4pt}
+% }
+% \pagestyle{myHeaderFooter}
+
+
+\usepackage[headsepline,footsepline]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+
+\ihead{\title \quad - \quad \subtitle}
+\ohead{\leftmark}
+
+\ifoot{\textcopyleft \theauthor}
+\ofoot{\thepage}
+
+
+%}}}
+%{{{ HYPERLINKS
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=NordBlack,
+    filecolor=NordMagenta,
+    urlcolor=NordBlue,
+}
+%}}}
+%{{{ HEADING
+\usepackage{titlesec}
+\usepackage{ulem}
+
+\titleformat{\part}
+{\huge\bfseries\color{NordBrightBlue}}
+{\titlerule}
+{0cm}
+{\filleft}[{\titlerule[2pt]}]
+
+\titleformat{\section}
+{\Large\bfseries}
+{\thesection}
+{.2cm}
+{}
+
+\titleformat{\subsection}
+{\large\bfseries}
+{\thesubsection}
+{.5cm}
+{}[\titlerule]
+
+\titleformat{\subsubsection}
+{\itshape\bfseries}
+{\thesubsubsection}
+{.5cm}
+{}[\titlerule]
+%}}}
