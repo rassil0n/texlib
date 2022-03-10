@@ -1,0 +1,12 @@
+\RequirePackage{etoc}
+\newcommand{\parttoc}[1][Inhalt des Kapitels\\
+\rule{\textwidth}{1pt}
+\vspace{-1.2cm}
+]{
+	\vfill
+  \etocsettocstyle{
+	  \addsec*{#1}}{}
+  \localtableofcontents
+  \rule{\textwidth}{1pt}
+  \vfill
+}

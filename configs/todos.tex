@@ -1,0 +1,33 @@
+% for static
+\def\showtodos {true}
+
+\RequirePackage[colorinlistoftodos,\todoshowing]{todonotes}
+\RequirePackage{totcount}
+\def\todoshowing{}
+\ifnum\strcmp{\showtodos}{false}=0
+    \def\todoshowing{disable}
+\fi
+\newtotcounter{todocounter}
+\let\oldtodo\todo
+\newcommand*{\newtodo}[2][]{\stepcounter{todocounter}\oldtodo[#1]{\thesection~(\thetodocounter)~#2}}
+\let\todo\newtodo
+\let\oldmissingfigure\missingfigure
+
+% include missingfigure in todolist
+\newcommand*{\newmissingfigure}[2][]{\stepcounter{todocounter}\oldmissingfigure[#1]{\thesection~(\thetodocounter)~#2}}
+\let\missingfigure\newmissingfigure
+\makeatletter
+\newcommand*{\mylistoftodos}{
+\if@todonotes@disabled
+\else
+    \ifnum\totvalue{todocounter}>0
+        \markboth{\@todonotes@todolistname}{\@todonotes@todolistname}
+        \phantomsection\todototoc
+        \listoftodos
+    \else
+    \fi
+\fi
+}
+\makeatother
+\newcommand{\lesstodo}[2][]{\todo[color=NordGreen!40,#1]{#2}}
+\newcommand{\moretodo}[2][]{\todo[color=NordRed!40,#1]{#2}}
