@@ -1,0 +1,65 @@
+%%
+% German Latex Letter Template
+% Use if you want to crate a Letter in DIN A4. You can use it in English and German
+% as well, just set language at begining of plain text.
+% Created by Jan Boelmann @ Nov. 2016 Jan.boelmann@live.de
+%%
+
+\ProvidesFile{sender.lco}[letter-class-option file]
+
+% symbols: Mobilephone, Phone, E-Mail
+\RequirePackage{marvosym}
+
+% Text of this document (sender.lco) is UTF-8 encoded
+\RequirePackage[utf8]{inputenc}
+
+% if yu wnat some colors...
+\RequirePackage{color}
+
+
+% see Koma script for more detailed descriptions
+% comment or delate if not needed
+\KOMAoptions{
+    foldmarks=true,
+    fromalign=right,
+    footsepline=off,
+    fromurl=off,
+    fromemail=true,
+    fromfax=off,
+    fromphone=true,
+    frommobilephone=true,
+}
+
+
+
+% You can define colors here like this...
+%\definecolor{mygray}{gray}{.55}
+%\definecolor{myblue}{rgb}{0.25,0.45,0.75}
+
+
+% Sender data:
+\setkomavar{fromphone}[\Telefon~]{+49\,123\,1234567}
+\setkomavar{frommobilephone}[\Mobilefone~]{+49\,123\,1234567}
+\setkomavar{fromemail}[\Letter~]{test@testmail.com}
+%\setkomavar{fromurl}[]{http://test.de}
+\setkomavar{backaddress}{Sender Name, Example Street 123 D, 12345 ExampleCity}
+\setkomavar{fromaddress}{Sender Name\\Example Street 123 D\\12345 ExampleCity}
+
+
+
+% optical stuff:
+\setkomafont{fromname}{\bfseries\color{black}\LARGE}
+\setkomafont{fromrule}{\color{black}}
+\setkomafont{fromaddress}{\small\rmfamily\mdseries\slshape\color{black}}
+% maybe in blue...
+%\setkomafont{fromaddress}{\small\rmfamily\mdseries\slshape\color{myblue}}
+\setkomafont{addressee}{\small}
+
+
+\setkomavar{signature}{Sender Name}
+\renewcommand*{\raggedsignature}{\raggedright}
+
+% define vertical distance for signature
+\@setplength{sigbeforevskip}{1.8cm}
+\endinput
+

@@ -1,0 +1,69 @@
+\input{config/static.tex}
+\documentclass[
+    sender,
+    paper=a4,
+    version=last,
+    fontsize=11pt,
+    DIV=13,
+    BCOR=0mm]{scrlttr2}
+\parskip3mm
+\parindent0mm % if you want to have no lineskip
+
+% language
+\RequirePackage[german]{babel}
+\RequirePackage{polyglossia}
+\setdefaultlanguage{german}
+
+% fonts
+\usepackage{fontspec}
+% \setmainfont[Scale=.95]{Noto Serif}
+% \renewcommand*\familydefault{\sfdefault}
+
+\usepackage{csquotes}
+\usepackage{graphicx}
+
+% Set Page layout:
+\usepackage{changepage}
+%\changepage{text height}{text width}{even-side margin}
+%{odd-side margin}{column sep.}
+%{topmargin}{headheight}{headsep}{footskip}
+\changepage{+3cm}{}{}{}{}{}{}{}{-5cm}
+\LoadLetterOption{config/sender}
+
+\begin{document}
+% Set Appendix text at very end (dubble point will be set automatically)
+\setkomavar*{enclseparator}{Appendix}
+% subject, date, place:
+\setkomavar{subject}{\betreff}
+\setkomavar{date}{den \today}
+\setkomavar{place}{Gallifrey}
+
+
+
+\renewcommand*{\adrentry}[8]{
+\ifdim #4pt>0pt\relax
+% Der Wert in {}-Klammer 4 ist eine Zahl größer als 0.
+\begin{letter}{#1 #2\\#3}
+
+
+\if #5m \opening{Lieber #1,} \fi % es wird \opening verwendet, deshalb ist die Anrede weiter unten auszuschalten
+\if #5w \opening{Liebe #1,} \fi  % es wird \opening verwendet, deshalb ist die Anrede weiter unten auszuschalten
+% \opening{Dear Recipient}
+
+% \parindent2mm
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+
+At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet.
+
+
+\closing{Mit sportlichen Grüßen}
+% \encl{annex}
+% end of letter
+\end{letter}
+	}
+
+% Adressdatei einbinden
+\input{config/address.adr}
+\end{document}
