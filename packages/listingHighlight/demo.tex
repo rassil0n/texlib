@@ -1,0 +1,66 @@
+\documentclass{beamer}
+
+\RequirePackage{fontspec}
+
+\setmainfont{Noto Serif}
+\setsansfont{Noto Sans}
+\setmonofont{Noto Mono}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage{listings}
+\usepackage{listinghighlight}
+
+\input{config/nordcolors.tex}
+\input{config/listing.tex}
+
+\title{listingHighlight}
+\subtitle{Highlight code in your beamer presenation}
+\author{rassil0n}
+\date{\today}
+\begin{document}
+\begin{frame}[plain]
+	\maketitle
+\end{frame}
+
+\begin{frame}{Usage}
+
+	\large{Include}
+	\listingHighlight[fontsize=\tiny, language=tex]{src/include.tex}{
+		\highlines{1}
+	}
+	\\
+	\bigskip
+	\large{Highlight}
+	\listingHighlight[fontsize=\tiny, language=tex]{src/highlight.tex}{
+		\highlines{1,4}
+	}
+	\\
+	\bigskip
+	\large{Highlight and Cover}
+	\listingHighlight[fontsize=\tiny, language=tex]{src/highlightCover.tex}{
+		\highlines{1,4,8}
+	}
+\end{frame}
+
+\begin{frame}{Highlight Lines of Code}
+	\listingHighlight[fontsize=\tiny, language=c]{src/main.c}{
+		\only<2>{
+			\highlines{1,4}
+		}
+	}
+\end{frame}
+
+\begin{frame}{Highlight and Cover Lines of Code}
+	\listingHighlightCover[fontsize=\tiny, language=c]{src/main.c}
+	{
+		\only<2>{
+			\highlines{1}
+		}
+	}
+	{
+		\only<1>{
+			\coverlines{1}
+		}
+	}
+\end{frame}
+
+\end{document}
